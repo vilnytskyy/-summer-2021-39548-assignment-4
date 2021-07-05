@@ -5,11 +5,13 @@ import user from '../imgs/user.png';
 class UserProfile extends Component {
     render() {
         return (
-            <div>
-                <img src={user} alt="userImg" />
-                <h1>User Profile</h1>
+            <div className="UserProfile">
+                <div className="UserProfile-header">
+                    <img src={user} alt="userImg" />
+                    <h1>User Profile</h1>
+                </div>
 
-                <Link className="link" id="home" to="/">Return to Home</Link>
+                <Link className="link" to="/">Return to Home</Link>
 
                 <div>Username: {this.props.userName}</div>
                 <div>Member Since: {this.props.memberSince}</div>
