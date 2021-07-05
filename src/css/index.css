@@ -20,11 +20,20 @@ div {
     text-decoration: none;
     font-size: 18pt;
     background-color: #A799B7;
-    padding: 5px;
+    /* display: block; */
+    padding: 5px 10px;
+    margin: 5px;
     border-style: solid;
 }
 
+/* .link#home {
+    background: #F4AFAB;
+} */
+
 .link:hover {
-    background: #222222;
-    color: #A799B7;
+    background-color: #A9B799;
 }
+
+/* .link#home:hover {
+    background: #A799B7;
+} */

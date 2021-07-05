@@ -9,10 +9,11 @@ class UserProfile extends Component {
                 <img src={user} alt="userImg" />
                 <h1>User Profile</h1>
 
+                <Link className="link" id="home" to="/">Return to Home</Link>
+
                 <div>Username: {this.props.userName}</div>
                 <div>Member Since: {this.props.memberSince}</div>
-                
-                <Link className="link" to="/">Return to Home</Link>
+
             </div>
         );
     }
