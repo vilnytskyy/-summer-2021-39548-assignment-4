@@ -1,5 +1,4 @@
 body {
-    margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #F4AFAB;    
@@ -18,7 +17,7 @@ div {
     font-family: 'Alegreya Sans SC', sans-serif;
     color: #222222;
     text-decoration: none;
-    font-size: 18pt;
+    font-size: 24px;
     background-color: #A799B7;
     padding: 5px 10px;
     margin: 5px;
@@ -29,10 +28,17 @@ div {
     background-color: #A9B799;
 }
 
-table, tr, td {
-    border: 3px solid #222222;
+.balance {
+    font-size: 24px;
+}
+
+table {
+    margin: auto;
     border-collapse: collapse;
+}
+
+tr, td {
+    border: 3px solid #222222;
     padding: 5px 10px;
-    margin: 5px;
     background-color: #A799B7;
 }

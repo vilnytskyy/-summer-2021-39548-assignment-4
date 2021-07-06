@@ -11,7 +11,6 @@ class Display extends Component {
 
         return (
             <tr className={"Display " + id}>
-                <td>{id}</td>
                 <td>{description}</td>
                 <td>{amount}</td>
                 <td>{date}</td>
