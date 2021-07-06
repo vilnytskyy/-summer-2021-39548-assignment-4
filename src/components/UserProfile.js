@@ -12,10 +12,11 @@ class UserProfile extends Component {
                 </div>
 
                 <Link className="link" to="/">Return to Home</Link>
-
-                <div>Username: {this.props.userName}</div>
-                <div>Member Since: {this.props.memberSince}</div>
-
+                
+                <div>
+                    <div>Username: {this.props.userName}</div>
+                    <div>Member Since: {this.props.memberSince}</div>
+                </div>
             </div>
         );
     }
