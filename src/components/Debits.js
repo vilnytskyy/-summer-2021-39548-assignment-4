@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import debitImg from '../imgs/debit.png';
 import Display from './Display';
 import AccountBalance from './AccountBalance';
+import AddData from './AddData';
 
 class Debits extends Component {
     render() {
@@ -34,6 +35,10 @@ class Debits extends Component {
                             {row}
                         </tbody>
                     </table>
+                </div>
+
+                <div>
+                    <AddData data={this.props.debitInfo} name={"Debits"} />
                 </div>
             </div>
         );
