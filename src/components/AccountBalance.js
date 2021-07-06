@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class AccountBalance extends Component {
     render() {
         return (
-            <div>
-                Balance: {this.props.accountBalance}
+            <div className="balance">
+                Account Balance: {this.props.accountBalance}
             </div>
         );
     }
