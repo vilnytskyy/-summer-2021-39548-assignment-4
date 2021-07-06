@@ -8,17 +8,31 @@ import Credits from './components/Credits';
 import Debits from './components/Debits';
 
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             accountBalance: 14568.27,
             currentUser: {
-                userName: 'joe_shmo',
-                memberSince: '07/23/96'
+                userName: 'vilnytskyy',
+                memberSince: '08/22/18'
             },
-            debits: [],
-            credits: []
+            debits: [
+                {
+                    id: "debit-id",
+                    description: "debit-description",
+                    amount: "debit-amount",
+                    date: "debit-date"
+                }
+            ],
+            credits: [
+                {
+                    id: "credit-id",
+                    description: "credit-description",
+                    amount: "credit-amount",
+                    date: "credit-date"
+                }
+            ]
         }
     }
 
@@ -47,7 +61,7 @@ class App extends Component {
         );
         const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
         const CreditsComponent = () => (<Credits />);
-        const DebitsComponent = () => (<Debits />);
+        const DebitsComponent = () => (<Debits debitInfo={this.state.debits}/>);
 
         return (
             <Router>
