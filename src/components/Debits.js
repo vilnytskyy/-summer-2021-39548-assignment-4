@@ -8,7 +8,7 @@ import AddData from './AddData';
 class Debits extends Component {
     render() {
         const row = this.props.debitInfo.map((temp) =>
-            <Display data={temp} key={temp.id}/>
+            <Display data={temp} key={temp.id} />
         );
 
         return (
@@ -38,7 +38,8 @@ class Debits extends Component {
                 </div>
 
                 <div>
-                    <AddData data={this.props.debitInfo} name={"Debits"} />
+                    <AddData data={this.props.debitInfo} name={"Debits"}
+                        handleSubmit={this.props.handleSubmit} handleInputChange={this.props.handleInputChange} />
                 </div>
             </div>
         );

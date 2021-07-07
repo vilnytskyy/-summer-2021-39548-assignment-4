@@ -34,9 +34,21 @@ class App extends Component {
                     date: "credit-date"
                 }
             ],
+            date: new Date(),
             debitsFound: false,
             creditsFound: false
         }
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    // Tick function, and date related funcs, based on code from https://reactjs.org/docs/state-and-lifecycle.html
+    // that details how to create a Clock class with local state and lifecycle methods
+    tick() {
+        this.setState({
+            date: new Date()
+        });
     }
 
     addCredit = () => {
@@ -44,7 +56,22 @@ class App extends Component {
     }
 
     addDebit = () => {
-        
+
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit(event) {
+        alert('Description: ' + this.state.description + '\nAmount: ' + this.state.amount + '\nDate: ' + this.state.date);
+        event.preventDefault();
     }
 
     fetchDebitData = async () => {
@@ -82,6 +109,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        this.timerID = setInterval(() => this.tick(), 1000);
         this.fetchDebitData();
         this.interval = setInterval(() => this.fetchDebitData(), 60 * 1000);
         this.fetchCreditData();
@@ -103,7 +131,9 @@ class App extends Component {
         const CreditsComponent = () => (
             <Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance} />);
         const DebitsComponent = () => (
-            <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance} />);
+            <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance}
+                handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange} />);
+
 
         return (
             <Router>
