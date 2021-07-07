@@ -34,7 +34,7 @@ class App extends Component {
                     date: "credit-date"
                 }
             ],
-            date: new Date(),
+            submitDate: new Date(),
             debitsFound: false,
             creditsFound: false
         }
@@ -47,7 +47,7 @@ class App extends Component {
     // that details how to create a Clock class with local state and lifecycle methods
     tick() {
         this.setState({
-            date: new Date()
+            submitDate: new Date()
         });
     }
 
@@ -70,7 +70,7 @@ class App extends Component {
     }
 
     handleSubmit(event) {
-        alert('Description: ' + this.state.description + '\nAmount: ' + this.state.amount + '\nDate: ' + this.state.date);
+        alert('Description: ' + this.state.description + '\nAmount: ' + this.state.amount + '\nDate: ' + this.state.submitDate);
         event.preventDefault();
     }
 
