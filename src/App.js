@@ -72,6 +72,26 @@ class App extends Component {
     }
 
     handleSubmit(event) {
+        let arr = [...this.state.debits];
+
+        arr.push({
+            id: "Self insert debit",
+            description: this.state.inputDescription,
+            amount: this.state.inputAmount,
+            date: this.state.submitDate
+        });
+
+        this.setState({
+            debits: [{
+                id: "arr.id",
+                description: "arr.description",
+                amount: "arr.amount",
+                date: "arr.date"
+            }],
+            inputDescription: "",
+            inputAmount: 0
+        })
+
         alert('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate);
         event.preventDefault();
     }
@@ -113,9 +133,9 @@ class App extends Component {
     componentDidMount() {
         this.timerID = setInterval(() => this.tick(), 1000);
         this.fetchDebitData();
-        this.interval = setInterval(() => this.fetchDebitData(), 60 * 1000);
+        // this.interval = setInterval(() => this.fetchDebitData(), 60 * 1000);
         this.fetchCreditData();
-        this.interval = setInterval(() => this.fetchCreditData(), 60 * 1000);
+        // this.interval = setInterval(() => this.fetchCreditData(), 60 * 1000);
     }
 
     mockLogIn = (logInInfo) => {
@@ -134,7 +154,8 @@ class App extends Component {
             <Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance} />);
         const DebitsComponent = () => (
             <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance}
-                handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange} submitDate={this.state.submitDate}/>);
+                handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange} submitDate={this.state.submitDate}
+                newDescription={this.state.inputDescription} newAmount={this.state.inputAmount} />);
 
 
         return (

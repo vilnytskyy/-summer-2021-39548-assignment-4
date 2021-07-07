@@ -35,6 +35,7 @@ class AddData extends Component {
                                         id="inputDescription"
                                         name="inputDescription"
                                         type="text"
+                                        value={this.props.newDescription}
                                         placeholder="New Flavor Town"
                                         onChange={this.props.handleInputChange}
                                     />
@@ -44,6 +45,7 @@ class AddData extends Component {
                                         id="inputAmount"
                                         name="inputAmount"
                                         type="decimal"
+                                        value={this.props.newAmount}
                                         placeholder="0.00"
                                         onChange={this.props.handleInputChange}
                                     />
@@ -62,7 +64,6 @@ class AddData extends Component {
                     </table>
                     <div>
                         <input type="submit" value={DataName} />
-
                     </div>
                 </form>
             </div>
