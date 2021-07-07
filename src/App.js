@@ -34,6 +34,8 @@ class App extends Component {
                     date: "credit-date"
                 }
             ],
+            inputDescription: "",
+            inputAmount: 0,
             submitDate: new Date(),
             debitsFound: false,
             creditsFound: false
@@ -70,7 +72,7 @@ class App extends Component {
     }
 
     handleSubmit(event) {
-        alert('Description: ' + this.state.description + '\nAmount: ' + this.state.amount + '\nDate: ' + this.state.submitDate);
+        alert('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate);
         event.preventDefault();
     }
 

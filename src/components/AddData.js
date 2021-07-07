@@ -14,17 +14,17 @@ class AddData extends Component {
                         <tbody>
                             <tr>
                                 <td>
-                                    <label htmlFor="description">
+                                    <label htmlFor="inputDescription">
                                         Description
                                     </label>
                                 </td>
                                 <td>
-                                    <label htmlFor="amount">
+                                    <label htmlFor="inputAmount">
                                         Amount
                                     </label>
                                 </td>
                                 <td>
-                                    <label htmlFor="date">
+                                    <label htmlFor="inputDate">
                                         Date
                                     </label>
                                 </td>
@@ -32,8 +32,8 @@ class AddData extends Component {
                             <tr>
                                 <td>
                                     <input
-                                        id="description"
-                                        name="description"
+                                        id="inputDescription"
+                                        name="inputDescription"
                                         type="text"
                                         placeholder="New Flavor Town"
                                         onChange={this.props.handleInputChange}
@@ -41,8 +41,8 @@ class AddData extends Component {
                                 </td>
                                 <td>
                                     <input
-                                        id="amount"
-                                        name="amount"
+                                        id="inputAmount"
+                                        name="inputAmount"
                                         type="decimal"
                                         placeholder="0.00"
                                         onChange={this.props.handleInputChange}
@@ -50,8 +50,8 @@ class AddData extends Component {
                                 </td>
                                 <td>
                                     <input
-                                        id="date"
-                                        name="date"
+                                        id="inputDate"
+                                        name="inputDate"
                                         type="text"
                                         value={this.props.submitDate}
                                         disabled
