@@ -6,8 +6,9 @@ class AddData extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            description: "initial-d",
-            amount: "initial-a"
+            description: "",
+            amount: 0,
+            date: ""
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -25,33 +26,40 @@ class AddData extends Component {
     }
 
     handleSubmit(event) {
-        alert('Description: ' + this.state.description + '\nAmount: ' + this.state.amount);
+        this.setState({ date: Date() });
+        alert('Description: ' + this.state.description + '\nAmount: ' + this.state.amount + '\nDate: ' + this.state.date);
         event.preventDefault();
     }
 
     render() {
         const DataName = "Add " + this.props.name;
-        
+
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Description:
-                    <input
-                        name="description"
-                        type="text"
-                        checked={this.state.description}
-                        onChange={this.handleInputChange} />
-                </label>
-                <label>
-                    Amount:
-                    <input
-                        name="amount"
-                        type="number"
-                        value={this.state.amount}
-                        onChange={this.handleInputChange} />
-                </label>
-                <input type="submit" value={DataName} />
-            </form>
+            <div className="Form">
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="description">
+                        Description:
+                        <input
+                            id="description"
+                            name="description"
+                            type="text"
+                            placeholder="Good Food Inc"
+                            // value={this.state.description}
+                            onChange={this.handleInputChange} />
+                    </label>
+                    <label htmlFor="amount">
+                        Amount:
+                        <input
+                            id="amount"
+                            name="amount"
+                            type="decimal"
+                            placeholder="0.00"
+                            // value={this.state.amount}
+                            onChange={this.handleInputChange} />
+                    </label>
+                    <input type="submit" value={DataName} />
+                </form>
+            </div>
         );
     }
 }

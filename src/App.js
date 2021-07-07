@@ -100,8 +100,10 @@ class App extends Component {
             <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
         );
         const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
-        const CreditsComponent = () => (<Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance}/>);
-        const DebitsComponent = () => (<Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance}/>);
+        const CreditsComponent = () => (
+            <Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance} />);
+        const DebitsComponent = () => (
+            <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance} />);
 
         return (
             <Router>
