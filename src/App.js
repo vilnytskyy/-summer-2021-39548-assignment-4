@@ -132,7 +132,7 @@ class App extends Component {
             <Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance} />);
         const DebitsComponent = () => (
             <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance}
-                handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange} />);
+                handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange} submitDate={this.state.submitDate}/>);
 
 
         return (

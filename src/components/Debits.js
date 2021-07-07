@@ -27,7 +27,7 @@ class Debits extends Component {
                 <div>
                     <table>
                         <tbody>
-                            <tr>
+                            <tr id="info">
                                 <td>Description</td>
                                 <td>Amount</td>
                                 <td>Date</td>
@@ -38,7 +38,7 @@ class Debits extends Component {
                 </div>
 
                 <div>
-                    <AddData data={this.props.debitInfo} name={"Debits"}
+                    <AddData data={this.props.debitInfo} name={"Debits"} submitDate={this.props.submitDate}
                         handleSubmit={this.props.handleSubmit} handleInputChange={this.props.handleInputChange} />
                 </div>
             </div>

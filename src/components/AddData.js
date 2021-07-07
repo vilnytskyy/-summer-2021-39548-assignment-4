@@ -5,31 +5,65 @@ import React, { Component } from 'react';
 class AddData extends Component {
     render() {
         const DataName = "Add " + this.props.name;
+        // console.log(this.props.submitDate);
 
         return (
-            <div className="Form">
+            <div>
                 <form onSubmit={this.props.handleSubmit}>
-                    <label htmlFor="description">
-                        Description:
-                        <input
-                            id="description"
-                            name="description"
-                            type="text"
-                            placeholder="New Flavor Town"
-                            // value={this.state.description}
-                            onChange={this.props.handleInputChange} />
-                    </label>
-                    <label htmlFor="amount">
-                        Amount:
-                        <input
-                            id="amount"
-                            name="amount"
-                            type="decimal"
-                            placeholder="0.00"
-                            // value={this.state.amount}
-                            onChange={this.props.handleInputChange} />
-                    </label>
-                    <input type="submit" value={DataName} />
+                    <table className="addDataTable">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label htmlFor="description">
+                                        Description
+                                    </label>
+                                </td>
+                                <td>
+                                    <label htmlFor="amount">
+                                        Amount
+                                    </label>
+                                </td>
+                                <td>
+                                    <label htmlFor="date">
+                                        Date
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        id="description"
+                                        name="description"
+                                        type="text"
+                                        placeholder="New Flavor Town"
+                                        onChange={this.props.handleInputChange}
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        id="amount"
+                                        name="amount"
+                                        type="decimal"
+                                        placeholder="0.00"
+                                        onChange={this.props.handleInputChange}
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        id="date"
+                                        name="date"
+                                        type="text"
+                                        value={this.props.submitDate}
+                                        disabled
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <input type="submit" value={DataName} />
+
+                    </div>
                 </form>
             </div>
         );
