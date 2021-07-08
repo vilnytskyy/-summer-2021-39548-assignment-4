@@ -60,7 +60,7 @@ class AddDebits extends Component {
                         </tbody>
                     </table>
                     <div>
-                        <input type="submit" value="Add Debits" />
+                        <input type="submit" value="Add Debit" />
                     </div>
                 </form>
             </div>

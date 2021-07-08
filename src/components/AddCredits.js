@@ -60,7 +60,7 @@ class AddCredits extends Component {
                         </tbody>
                     </table>
                     <div>
-                        <input type="submit" value="Add Credits" />
+                        <input type="submit" value="Add Credit" />
                     </div>
                 </form>
             </div>
