@@ -34,7 +34,6 @@ class App extends Component {
                     date: "credit-date"
                 }
             ],
-            inputType: "debit or credit",
             inputDescription: "",
             inputAmount: 0,
             submitDate: new Date(),
@@ -44,6 +43,7 @@ class App extends Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.addDebit = this.addDebit.bind(this);
+        this.addCredit = this.addCredit.bind(this);
     }
 
     // Tick function, and date related funcs, based on code from https://reactjs.org/docs/state-and-lifecycle.html
@@ -53,14 +53,6 @@ class App extends Component {
             submitDate: new Date()
         });
     }
-
-    addCredit = () => {
-
-    }
-
-    // addDebit = () => {
-
-    // }
 
     handleInputChange(event) {
         const target = event.target;
@@ -80,6 +72,25 @@ class App extends Component {
                     // Still confused on how to make unique ids/useful ids??
                     // Current id generator breaks if you add more than one debit at the same time
                     id: "AddedDebit@" + this.state.submitDate.toISOString(),
+                    description: this.state.inputDescription,
+                    amount: this.state.inputAmount,
+                    date: this.state.submitDate.toISOString()
+                }
+            ]
+        });
+
+        console.log('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate.toISOString());
+        event.preventDefault();
+    }
+
+    addCredit(event) {
+        this.setState({
+            credits: [
+                ...this.state.credits,
+                {
+                    // Still confused on how to make unique ids/useful ids??
+                    // Current id generator breaks if you add more than one debit at the same time
+                    id: "AddedCredit@" + this.state.submitDate.toISOString(),
                     description: this.state.inputDescription,
                     amount: this.state.inputAmount,
                     date: this.state.submitDate.toISOString()
@@ -144,9 +155,11 @@ class App extends Component {
         );
         const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
         const CreditsComponent = () => (
-            <Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance} />);
+            <Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance}
+                addCredit={this.addCredit} handleInputChange={this.handleInputChange} submitDate={this.state.submitDate}
+                newDescription={this.state.inputDescription} newAmount={this.state.inputAmount} />);
         const DebitsComponent = () => (
-            <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance} inputType={this.state.inputType}
+            <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance}
                 addDebit={this.addDebit} handleInputChange={this.handleInputChange} submitDate={this.state.submitDate}
                 newDescription={this.state.inputDescription} newAmount={this.state.inputAmount} />);
 

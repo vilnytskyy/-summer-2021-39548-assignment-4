@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import debitImg from '../imgs/debit.png';
 import Display from './Display';
 import AccountBalance from './AccountBalance';
-import AddData from './AddData';
+import AddDebits from './AddDebits';
 
 class Debits extends Component {
     render() {
@@ -38,7 +38,7 @@ class Debits extends Component {
                 </div>
 
                 <div>
-                    <AddData data={this.props.debitInfo} submitDate={this.props.submitDate}
+                    <AddDebits submitDate={this.props.submitDate}
                         addDebit={this.props.addDebit} handleInputChange={this.props.handleInputChange}
                         newDescription={this.props.inputDescription} newAmount={this.props.inputAmount} />
                 </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import creditImg from '../imgs/credit.png';
 import Display from './Display';
 import AccountBalance from './AccountBalance';
+import AddCredits from './AddCredits';
 
 class Credits extends Component {
     render() {
@@ -26,7 +27,7 @@ class Credits extends Component {
                 <div>
                     <table>
                         <tbody>
-                            <tr>
+                            <tr id="info">
                                 <td>Description</td>
                                 <td>Amount</td>
                                 <td>Date</td>
@@ -34,6 +35,12 @@ class Credits extends Component {
                             {row}
                         </tbody>
                     </table>
+                </div>
+
+                <div>
+                    <AddCredits submitDate={this.props.submitDate}
+                        addCredit={this.props.addCredit} handleInputChange={this.props.handleInputChange}
+                        newDescription={this.props.inputDescription} newAmount={this.props.inputAmount} />
                 </div>
             </div>
         );
