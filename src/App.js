@@ -13,25 +13,25 @@ class App extends Component {
         super(props);
 
         this.state = {
-            accountBalance: 14568.27,
+            accountBalance: 0.00,
             currentUser: {
                 userName: 'vilnytskyy',
                 memberSince: '06/27/21'
             },
             debits: [
                 {
-                    id: "debit-id",
-                    description: "debit-description",
-                    amount: "debit-amount",
-                    date: "debit-date"
+                    id: "",
+                    description: "",
+                    amount: 0,
+                    date: ""
                 }
             ],
             credits: [
                 {
-                    id: "credit-id",
-                    description: "credit-description",
-                    amount: "credit-amount",
-                    date: "credit-date"
+                    id: "",
+                    description: "",
+                    amount: 0,
+                    date: ""
                 }
             ],
             inputDescription: "",
