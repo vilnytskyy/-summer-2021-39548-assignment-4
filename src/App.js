@@ -65,40 +65,44 @@ class App extends Component {
     }
 
     addDebit(event) {
-        this.setState({
+        console.log('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate.toISOString());
+
+        this.setState((state) => ({
             debits: [
-                ...this.state.debits,
+                ...state.debits,
                 {
                     // Still confused on how to make unique ids/useful ids??
                     // Current id generator breaks if you add more than one debit at the same time
-                    id: "AddedDebit@" + this.state.submitDate.toISOString(),
-                    description: this.state.inputDescription,
-                    amount: this.state.inputAmount,
-                    date: this.state.submitDate.toISOString()
+                    id: "AddedDebit@" + state.submitDate.toISOString(),
+                    description: state.inputDescription,
+                    amount: state.inputAmount,
+                    date: state.submitDate.toISOString()
                 }
-            ]
-        });
+            ],
+            accountBalance: (parseFloat(state.accountBalance) - parseFloat(state.inputAmount)).toFixed(2)
+        }));
 
-        console.log('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate.toISOString());
         event.preventDefault();
     }
 
     addCredit(event) {
-        this.setState({
+        console.log('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate.toISOString());
+
+        this.setState((state) => ({
             credits: [
-                ...this.state.credits,
+                ...state.credits,
                 {
                     // Still confused on how to make unique ids/useful ids??
                     // Current id generator breaks if you add more than one debit at the same time
-                    id: "AddedCredit@" + this.state.submitDate.toISOString(),
-                    description: this.state.inputDescription,
-                    amount: this.state.inputAmount,
-                    date: this.state.submitDate.toISOString()
+                    id: "AddedCredit@" + state.submitDate.toISOString(),
+                    description: state.inputDescription,
+                    amount: state.inputAmount,
+                    date: state.submitDate.toISOString()
                 }
-            ]
-        });
+            ],
+            accountBalance: (parseFloat(state.accountBalance) + parseFloat(state.inputAmount)).toFixed(2)
+        }));
 
-        console.log('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate.toISOString());
         event.preventDefault();
     }
 
