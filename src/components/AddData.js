@@ -55,7 +55,7 @@ class AddData extends Component {
                                         id="inputDate"
                                         name="inputDate"
                                         type="text"
-                                        value={this.props.submitDate}
+                                        value={this.props.submitDate.toISOString()}
                                         disabled
                                     />
                                 </td>

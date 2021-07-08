@@ -72,27 +72,21 @@ class App extends Component {
     }
 
     handleSubmit(event) {
-        let arr = [...this.state.debits];
-
-        arr.push({
-            id: "Self insert debit",
-            description: this.state.inputDescription,
-            amount: this.state.inputAmount,
-            date: this.state.submitDate
+        this.setState({
+            debits: [
+                ...this.state.debits,
+                {
+                    // Still confused on how to make unique ids/useful ids??
+                    // Current id generator breaks if you add more than one debit at the same time
+                    id: "AddedDebit@" + this.state.submitDate.toISOString(),
+                    description: this.state.inputDescription,
+                    amount: this.state.inputAmount,
+                    date: this.state.submitDate.toISOString()
+                }
+            ]
         });
 
-        this.setState({
-            debits: [{
-                id: "arr.id",
-                description: "arr.description",
-                amount: "arr.amount",
-                date: "arr.date"
-            }],
-            inputDescription: "",
-            inputAmount: 0
-        })
-
-        alert('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate);
+        console.log('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate.toISOString());
         event.preventDefault();
     }
 
@@ -133,9 +127,7 @@ class App extends Component {
     componentDidMount() {
         this.timerID = setInterval(() => this.tick(), 1000);
         this.fetchDebitData();
-        // this.interval = setInterval(() => this.fetchDebitData(), 60 * 1000);
         this.fetchCreditData();
-        // this.interval = setInterval(() => this.fetchCreditData(), 60 * 1000);
     }
 
     mockLogIn = (logInInfo) => {
