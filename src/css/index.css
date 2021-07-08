@@ -29,10 +29,6 @@ div {
     background-color: #A9B799;
 }
 
-.balance {
-    font-size: 24px;
-}
-
 table {
     margin: auto;
     border-collapse: collapse;
@@ -68,4 +64,12 @@ input {
     margin: 10px;
     color: #222222;
     border: 3px solid #222222;
+}
+
+.description {
+    text-align: left;
+}
+
+.amount {
+    text-align: right;
 }
