@@ -4,12 +4,9 @@ import React, { Component } from 'react';
 
 class AddData extends Component {
     render() {
-        const DataName = "Add " + this.props.name;
-        // console.log(this.props.submitDate);
-
         return (
             <div>
-                <form onSubmit={this.props.handleSubmit}>
+                <form onSubmit={this.props.addDebit}>
                     <table className="addDataTable">
                         <tbody>
                             <tr>
@@ -63,7 +60,7 @@ class AddData extends Component {
                         </tbody>
                     </table>
                     <div>
-                        <input type="submit" value={DataName} />
+                        <input type="submit" value="Add Debits" />
                     </div>
                 </form>
             </div>

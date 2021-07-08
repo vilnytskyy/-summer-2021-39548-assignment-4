@@ -38,8 +38,8 @@ class Debits extends Component {
                 </div>
 
                 <div>
-                    <AddData data={this.props.debitInfo} name={"Debits"} submitDate={this.props.submitDate}
-                        handleSubmit={this.props.handleSubmit} handleInputChange={this.props.handleInputChange}
+                    <AddData data={this.props.debitInfo} submitDate={this.props.submitDate}
+                        addDebit={this.props.addDebit} handleInputChange={this.props.handleInputChange}
                         newDescription={this.props.inputDescription} newAmount={this.props.inputAmount} />
                 </div>
             </div>

@@ -34,6 +34,7 @@ class App extends Component {
                     date: "credit-date"
                 }
             ],
+            inputType: "debit or credit",
             inputDescription: "",
             inputAmount: 0,
             submitDate: new Date(),
@@ -42,7 +43,7 @@ class App extends Component {
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.addDebit = this.addDebit.bind(this);
     }
 
     // Tick function, and date related funcs, based on code from https://reactjs.org/docs/state-and-lifecycle.html
@@ -57,9 +58,9 @@ class App extends Component {
 
     }
 
-    addDebit = () => {
+    // addDebit = () => {
 
-    }
+    // }
 
     handleInputChange(event) {
         const target = event.target;
@@ -71,7 +72,7 @@ class App extends Component {
         });
     }
 
-    handleSubmit(event) {
+    addDebit(event) {
         this.setState({
             debits: [
                 ...this.state.debits,
@@ -145,8 +146,8 @@ class App extends Component {
         const CreditsComponent = () => (
             <Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance} />);
         const DebitsComponent = () => (
-            <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance}
-                handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange} submitDate={this.state.submitDate}
+            <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance} inputType={this.state.inputType}
+                addDebit={this.addDebit} handleInputChange={this.handleInputChange} submitDate={this.state.submitDate}
                 newDescription={this.state.inputDescription} newAmount={this.state.inputAmount} />);
 
 
