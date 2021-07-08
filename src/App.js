@@ -34,17 +34,72 @@ class App extends Component {
                     date: "credit-date"
                 }
             ],
+            inputDescription: "",
+            inputAmount: 0,
+            submitDate: new Date(),
             debitsFound: false,
             creditsFound: false
         }
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.addDebit = this.addDebit.bind(this);
+        this.addCredit = this.addCredit.bind(this);
     }
 
-    addCredit = () => {
-
+    // Tick function, and date related funcs, based on code from https://reactjs.org/docs/state-and-lifecycle.html
+    // that details how to create a Clock class with local state and lifecycle methods
+    tick() {
+        this.setState({
+            submitDate: new Date()
+        });
     }
 
-    addDebit = () => {
-        
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    addDebit(event) {
+        this.setState({
+            debits: [
+                ...this.state.debits,
+                {
+                    // Still confused on how to make unique ids/useful ids??
+                    // Current id generator breaks if you add more than one debit at the same time
+                    id: "AddedDebit@" + this.state.submitDate.toISOString(),
+                    description: this.state.inputDescription,
+                    amount: this.state.inputAmount,
+                    date: this.state.submitDate.toISOString()
+                }
+            ]
+        });
+
+        console.log('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate.toISOString());
+        event.preventDefault();
+    }
+
+    addCredit(event) {
+        this.setState({
+            credits: [
+                ...this.state.credits,
+                {
+                    // Still confused on how to make unique ids/useful ids??
+                    // Current id generator breaks if you add more than one debit at the same time
+                    id: "AddedCredit@" + this.state.submitDate.toISOString(),
+                    description: this.state.inputDescription,
+                    amount: this.state.inputAmount,
+                    date: this.state.submitDate.toISOString()
+                }
+            ]
+        });
+
+        console.log('Description: ' + this.state.inputDescription + '\nAmount: ' + this.state.inputAmount + '\nDate: ' + this.state.submitDate.toISOString());
+        event.preventDefault();
     }
 
     fetchDebitData = async () => {
@@ -82,10 +137,9 @@ class App extends Component {
     }
 
     componentDidMount() {
+        this.timerID = setInterval(() => this.tick(), 1000);
         this.fetchDebitData();
-        this.interval = setInterval(() => this.fetchDebitData(), 60 * 1000);
         this.fetchCreditData();
-        this.interval = setInterval(() => this.fetchCreditData(), 60 * 1000);
     }
 
     mockLogIn = (logInInfo) => {
@@ -100,8 +154,15 @@ class App extends Component {
             <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
         );
         const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
-        const CreditsComponent = () => (<Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance}/>);
-        const DebitsComponent = () => (<Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance}/>);
+        const CreditsComponent = () => (
+            <Credits creditInfo={this.state.credits} accountBalance={this.state.accountBalance}
+                addCredit={this.addCredit} handleInputChange={this.handleInputChange} submitDate={this.state.submitDate}
+                newDescription={this.state.inputDescription} newAmount={this.state.inputAmount} />);
+        const DebitsComponent = () => (
+            <Debits debitInfo={this.state.debits} accountBalance={this.state.accountBalance}
+                addDebit={this.addDebit} handleInputChange={this.handleInputChange} submitDate={this.state.submitDate}
+                newDescription={this.state.inputDescription} newAmount={this.state.inputAmount} />);
+
 
         return (
             <Router>

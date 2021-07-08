@@ -13,7 +13,7 @@ div {
     font-weight: 600;
 }
 
-.link {
+.link, input[type=submit] {
     font-family: 'Alegreya Sans SC', sans-serif;
     color: #222222;
     text-decoration: none;
@@ -22,9 +22,10 @@ div {
     padding: 5px 10px;
     margin: 5px;
     border-style: solid;
+    font-weight: 600;
 }
 
-.link:hover {
+.link:hover, input[type=submit]:hover {
     background-color: #A9B799;
 }
 
@@ -37,8 +38,34 @@ table {
     border-collapse: collapse;
 }
 
-tr, td {
+#info td {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 24px;
+    background-color: #A9B799;
+}
+
+td {
     border: 3px solid #222222;
     padding: 5px 10px;
     background-color: #A799B7;
+}
+
+.addDataTable td {
+    border: none;
+    background-color: #F4AFAB;
+    padding: 0;
+}
+
+label {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 24px;
+}
+
+input {
+    padding: 5px 10px;
+    font-size: 18px;
+    background-color: #A9B799;
+    margin: 10px;
+    color: #222222;
+    border: 3px solid #222222;
 }
