@@ -22,6 +22,7 @@ div {
     padding: 5px 10px;
     margin: 5px;
     border-style: solid;
+    font-weight: 600;
 }
 
 .link:hover, input[type=submit]:hover {
