@@ -13,7 +13,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            accountBalance: 0.00,
+            accountBalance: parseFloat(0.00).toFixed(2),
             currentUser: {
                 userName: 'vilnytskyy',
                 memberSince: '06/27/21'
@@ -22,7 +22,7 @@ class App extends Component {
                 {
                     id: "",
                     description: "",
-                    amount: 0,
+                    amount: parseFloat(0.00).toFixed(2),
                     date: ""
                 }
             ],
@@ -30,12 +30,12 @@ class App extends Component {
                 {
                     id: "",
                     description: "",
-                    amount: 0,
+                    amount: parseFloat(0.00).toFixed(2),
                     date: ""
                 }
             ],
             inputDescription: "",
-            inputAmount: 0,
+            inputAmount: parseFloat(0.00).toFixed(2),
             submitDate: new Date(),
             debitsFound: false,
             creditsFound: false
@@ -93,7 +93,7 @@ class App extends Component {
                 ...state.credits,
                 {
                     // Still confused on how to make unique ids/useful ids??
-                    // Current id generator breaks if you add more than one debit at the same time
+                    // Current id generator breaks if you add more than one credit at the same time
                     id: "AddedCredit@" + state.submitDate.toISOString(),
                     description: state.inputDescription,
                     amount: state.inputAmount,
@@ -110,6 +110,12 @@ class App extends Component {
         try {
             let response = await axios.get("https://moj-api.herokuapp.com/debits");
             this.setState({ debits: response.data, debitsFound: true });
+            let arr = this.state.debits;
+            let sum = arr.reduce((a, v) => a = a + v.amount, 0);
+            console.log("Initial Debits: " + sum);
+            this.setState((state) => ({
+                accountBalance: (parseFloat(state.accountBalance) - parseFloat(sum)).toFixed(2)
+            }));
         } catch (error) {
             if (error.response) {
                 /*
@@ -127,6 +133,12 @@ class App extends Component {
         try {
             let response = await axios.get("https://moj-api.herokuapp.com/credits");
             this.setState({ credits: response.data, creditsFound: true });
+            let arr = this.state.credits;
+            let sum = arr.reduce((a, v) => a = a + v.amount, 0);
+            console.log("Initial Credits: " + sum);
+            this.setState((state) => ({
+                accountBalance: (parseFloat(state.accountBalance) + parseFloat(sum)).toFixed(2)
+            }));
         } catch (error) {
             if (error.response) {
                 /*
