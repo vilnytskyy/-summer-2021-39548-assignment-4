@@ -2,7 +2,7 @@
 // that details controlled components and handling multiple inputs
 import React, { Component } from 'react';
 
-class AddData extends Component {
+class AddDebits extends Component {
     render() {
         return (
             <div>
@@ -68,4 +68,4 @@ class AddData extends Component {
     }
 }
 
-export default AddData;
+export default AddDebits;
