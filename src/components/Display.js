@@ -11,8 +11,8 @@ class Display extends Component {
 
         return (
             <tr className={"Display " + id}>
-                <td>{description}</td>
-                <td>{amount}</td>
+                <td className="description">{description}</td>
+                <td className="amount">{parseFloat(amount).toFixed(2)}</td>
                 <td>{date}</td>
             </tr>
         );
